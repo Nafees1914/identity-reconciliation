@@ -13,12 +13,6 @@ java {
 	}
 }
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
 repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
@@ -38,4 +32,16 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+springBoot {
+	mainClass = 'com.bitespeed.identity_reconciliation.IdentityReconciliationApplication'
+}
+
+jar {
+	manifest {
+		attributes(
+				'Main-Class': 'com.bitespeed.identity_reconciliation.IdentityReconciliationApplication'
+		)
+	}
 }
